@@ -9,7 +9,7 @@ const Header = () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className={styles.header}>
+    <header>
       <nav className={styles.main_nav}>
         <GiHamburgerMenu
           className={styles.menubar}
@@ -17,22 +17,20 @@ const Header = () => {
         />
         <img
           src="../../../static/images/logo_2x.png"
-          alt="SABKA_BAZAAR"
+          alt="SABKA BAZAAR LOGO"
           className={styles.logo}
         />
         <nav className={styles.navigations_one}>
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
+          <div className={styles.signin_and_registration}>
+            <Link to="/signin">SignIn</Link>
+            <Link to="/register">Register</Link>
+          </div>
         </nav>
       </nav>
-      <div className={styles.cart_menu}>
-        <nav className={styles.navigations_two}>
-          <Link to="/signin">SignIn</Link>
-          <Link to="/register">Register</Link>
-        </nav>
-        <div className={styles.cart}>
-          <IoMdCart />0 items
-        </div>
+      <div className={styles.cart_items}>
+        <IoMdCart />0 items
       </div>
       <Sidebar open={open} handleOpen={setOpen} />
     </header>

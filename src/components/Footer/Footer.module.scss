@@ -1,23 +1,23 @@
-.footer {
-   background-color: #eaeaea;
-   padding: 7px 10%;
-   position: relative;
-   bottom: 0 !important;
-   z-index: 90;
-   width: 100%;
-   p {
-      margin: 7px auto;
-   }
+footer {
+  background-color: #eaeaea;
+  padding: 7px 10%;
+  position: relative;
+  bottom: 0 !important;
+  z-index: 90;
+  width: 100%;
+  p {
+    margin: 7px auto;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
-   .footer {
-      padding: 7px 5%;
-   }
+  footer {
+    padding: 7px 5%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
-   .footer {
-      padding: 7px 10px;
-   }
+  footer {
+    padding: 7px 10px;
+  }
 }
