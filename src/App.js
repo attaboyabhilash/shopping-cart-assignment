@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import { Home } from "./pages"
+import { Home, Register, SignIn } from "./pages"
 
 function App() {
   return (
@@ -16,10 +16,10 @@ function App() {
           <h1>Products Category</h1>
         </Route>
         <Route path="/signin">
-          <h1>SignIn</h1>
+          <SignIn />
         </Route>
         <Route path="/register">
-          <h1>Register</h1>
+          <Register />
         </Route>
       </Switch>
     </Router>

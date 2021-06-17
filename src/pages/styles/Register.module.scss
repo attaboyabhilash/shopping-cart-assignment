@@ -1,0 +1,50 @@
+.register {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: flex-start;
+   margin-top: 175px;
+
+   .mid_flexer {
+      height: 10px;
+      width: 50px;
+   }
+   .register_form {
+      width: 350px;
+
+      input[type="submit"] {
+         margin-top: 10px;
+         width: 100%;
+         cursor: pointer;
+         background-color: #d10157;
+         color: #fff;
+         padding: 10px;
+         border-radius: 2px;
+         border: 0px;
+         font-weight: 500;
+         font-size: 1.1em;
+         font-family: "Dosis", sans-serif;
+      }
+   }
+}
+
+@media only screen and (max-width: 800px) {
+   .register {
+      display: block;
+      width: fit-content;
+      margin: auto;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      .mid_flexer {
+         height: 40px;
+      }
+   }
+}
+
+@media only screen and (max-width: 400px) {
+   .register {
+      .register_form {
+         width: 90%;
+         margin: auto;
+      }
+   }
+}
