@@ -1,3 +1,5 @@
-export { default as Home } from "./home"
+export { default as Home } from "./home.js"
+export { default as Products } from "./products.js"
+export { default as Category } from "./category.js"
 export { default as SignIn } from "./signin.js"
 export { default as Register } from "./register.js"

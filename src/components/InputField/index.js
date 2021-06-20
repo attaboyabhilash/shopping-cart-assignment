@@ -1,11 +1,20 @@
 import React from "react"
 import styles from "./InputField.module.scss"
 
-const InputField = ({ name, type, label, values, errors, handleChange }) => {
+const InputField = ({
+  name,
+  type,
+  label,
+  innerRef,
+  values,
+  errors,
+  handleChange,
+}) => {
   return (
     <fieldset className={styles.block_field}>
       <input
         name={name}
+        ref={innerRef ? innerRef : null}
         type={type ? type : name}
         value={values[name]}
         onChange={handleChange}
@@ -19,6 +28,7 @@ const InputField = ({ name, type, label, values, errors, handleChange }) => {
       />
       <label
         htmlFor={name}
+        aria-labelledby={label}
         className={styles.placeholder}
         style={
           values[name] !== ""
@@ -36,7 +46,11 @@ const InputField = ({ name, type, label, values, errors, handleChange }) => {
         {label}
       </label>
       {errors[name] !== "" ? (
-        <label htmlFor="error" className={styles.error}>
+        <label
+          htmlFor="error"
+          className={styles.error}
+          aria-labelledby={errors[name]}
+        >
           {errors[name]}
         </label>
       ) : null}

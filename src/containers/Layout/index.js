@@ -6,7 +6,8 @@ import styles from "./Layout.module.scss"
 const Layout = ({ children }) => {
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+  }, [children])
+
   return (
     <>
       <Header />

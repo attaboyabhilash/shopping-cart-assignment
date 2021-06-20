@@ -5,114 +5,56 @@ const registerValidator = ({
   password,
   confirmPassword,
 }) => {
-  if (
-    email === "" &&
-    password === "" &&
-    firstName === "" &&
-    lastName === "" &&
-    confirmPassword === ""
-  ) {
-    return {
-      firstName: "First name cannot be empty!",
-      lastName: "Last name cannot be empty!",
-      email: "Email cannot be empty!",
-      password: "Password cannot be empty!",
-      confirmPassword: "Confirm password cannot be empty!",
-    }
+  let returnValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   }
   if (firstName === "") {
-    return {
-      firstName: "First name cannot be empty!",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    }
+    returnValues.firstName = "First name cannot be empty!"
   }
   if (lastName === "") {
-    return {
-      firstName: "",
-      lastName: "Last name cannot be empty!",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    }
+    returnValues.lastName = "Last name cannot be empty!"
   }
   if (email === "") {
-    return {
-      firstName: "",
-      lastName: "",
-      email: "Email cannot be empty!",
-      password: "",
-      confirmPassword: "",
-    }
+    returnValues.email = "Email cannot be empty!"
   }
   if (password === "") {
-    return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "Password cannot be empty!",
-      confirmPassword: "",
-    }
+    returnValues.password = "Password cannot be empty!"
   }
   if (confirmPassword === "") {
-    return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "Confirm password cannot be empty!",
-    }
+    returnValues.confirmPassword = "Confirm password cannot be empty!"
   }
-  if (
-    email !== "" &&
-    password !== "" &&
-    firstName !== "" &&
-    lastName !== "" &&
-    confirmPassword !== ""
-  ) {
+  if (email !== "") {
     const regExEmail =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    const regExPass = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
     if (!regExEmail.test(email)) {
-      return {
-        firstName: "",
-        lastName: "",
-        email: "Email is Invalid!",
-        password: "",
-        confirmPassword: "",
-      }
-    }
-
-    if (!regExPass.test(password)) {
-      return {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password:
-          "Password must contain an alphabet, number, special character",
-        confirmPassword: "",
-      }
-    }
-
-    if (password !== confirmPassword) {
-      return {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirmPassword: "Confirm password not equal to password",
-      }
-    }
-    return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      returnValues.email = "Email is Invalid!"
     }
   }
+  if (password !== "") {
+    const regExPassAlphabet = /[a-zA-Z]/g
+    const regExPassNumbers = /\d/g
+    const regExPassHasSpaces = /\s/g
+    if (password.length <= 6) {
+      returnValues.password = "Password must be greater than six characters"
+    }
+    if (regExPassHasSpaces.test(password)) {
+      returnValues.password = "Password must not contain any spaces"
+    }
+    if (!regExPassNumbers.test(password)) {
+      returnValues.password = "Password must contain a number"
+    }
+    if (!regExPassAlphabet.test(password)) {
+      returnValues.password = "Password must contain an alphabet"
+    }
+  }
+  if (password !== confirmPassword) {
+    returnValues.confirmPassword = "Confirm password not equal to password"
+  }
+  return returnValues
 }
 
 export default registerValidator

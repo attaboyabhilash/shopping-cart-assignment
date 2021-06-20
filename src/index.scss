@@ -18,3 +18,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.sr-only {
+  position: absolute;
+  left: -1000000px;
+}

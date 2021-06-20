@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import { Home, Register, SignIn } from "./pages"
+import { Home, Register, SignIn, Products, Category } from "./pages"
 
 function App() {
   return (
@@ -10,10 +10,10 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/products">
-          <h1>Products</h1>
+          <Products />
         </Route>
         <Route exact path="/products/:categoryId">
-          <h1>Products Category</h1>
+          <Category />
         </Route>
         <Route path="/signin">
           <SignIn />

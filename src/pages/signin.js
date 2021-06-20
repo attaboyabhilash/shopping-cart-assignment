@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import Layout from "../containers/Layout"
 import styles from "./styles/Signin.module.scss"
@@ -10,10 +10,15 @@ import signInValidator from "../utils/signinValidator"
 const Signin = () => {
   document.title = "SignIn | Shopping Cart"
   const history = useHistory()
+  const inputRef = useRef()
   const { inputs, errors, handleChange, resetForm, setErrors } = useForm({
     email: "",
     password: "",
   })
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -39,6 +44,7 @@ const Signin = () => {
           <InputField
             name="email"
             label="Email"
+            innerRef={inputRef}
             values={inputs}
             errors={errors}
             handleChange={handleChange}

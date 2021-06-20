@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import Layout from "../containers/Layout"
 import styles from "./styles/Register.module.scss"
@@ -10,6 +10,7 @@ import registerValidator from "../utils/registerValidator"
 const Register = () => {
   document.title = "Register | Shopping Cart"
   const history = useHistory()
+  const inputRef = useRef()
   const { inputs, errors, handleChange, resetForm, setErrors } = useForm({
     firstName: "",
     lastName: "",
@@ -17,6 +18,10 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   })
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -47,6 +52,7 @@ const Register = () => {
         >
           <InputField
             type="text"
+            innerRef={inputRef}
             name="firstName"
             label="First Name"
             values={inputs}
@@ -76,7 +82,7 @@ const Register = () => {
             handleChange={handleChange}
           />
           <InputField
-            type="text"
+            type="password"
             name="confirmPassword"
             label="Confirm Password"
             values={inputs}

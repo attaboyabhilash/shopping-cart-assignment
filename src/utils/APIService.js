@@ -12,6 +12,7 @@ const APIService = ({ apiRoute, method }) => {
       .then(() => setIsLoading(false))
       .catch((err) => console.error(err))
   }, [])
+
   return {
     response,
     isLoading,

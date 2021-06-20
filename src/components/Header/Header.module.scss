@@ -26,7 +26,6 @@ header {
       a {
         padding: 10px;
         font-weight: 600;
-        outline: none;
       }
       .signin_and_registration {
         position: absolute;
@@ -65,15 +64,15 @@ header {
   header {
     padding: 10px 0px;
 
-    .cart_menu {
-      .navigations_two {
-        a {
-          padding: 0px 10px 10px 10px;
+    .main_nav {
+      .navigations_one {
+        .signin_and_registration {
+          right: 0;
         }
       }
-      .cart {
-        right: 0;
-      }
+    }
+    .cart_items {
+      right: 0;
     }
   }
 }
