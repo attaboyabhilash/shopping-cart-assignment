@@ -44,6 +44,7 @@ const ProductCard = ({ product }) => {
           {items.filter((item) => item.id === id).length === 0 ? (
             <button
               disabled={isLoading}
+              aria-labelledby={`Buy ${name} @ MRP Rs. ${price}`}
               className={styles.buyBtn}
               onClick={() => handleBuy()}
             >
