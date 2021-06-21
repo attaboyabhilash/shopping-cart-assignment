@@ -17,6 +17,22 @@ const Cart = ({ setCartOpen }) => {
   const totalPrice = useSelector((state) => state.cart.totalPrice)
   const dispatch = useDispatch()
 
+  const handleClickAndEnterDecrement = (quantity, id) => {
+    if (quantity === 1) {
+      dispatch(decrementCart(id))
+    } else {
+      dispatch(decrementCartItems(id))
+    }
+  }
+
+  const handleClickAndEnterIncrement = (quantity, stock, id) => {
+    if (quantity === stock) {
+      dispatch(incrementCartItemsByZero(id))
+    } else {
+      dispatch(incrementCartItems(id))
+    }
+  }
+
   useEffect(() => {
     dispatch(findTotalPrice())
     // eslint-disable-next-line
@@ -29,7 +45,15 @@ const Cart = ({ setCartOpen }) => {
           <h3>My Cart</h3>
           <p>({items.length} items)</p>
         </div>
-        <IoCloseSharp onClick={() => setCartOpen(false)} />
+        <IoCloseSharp
+          tabIndex="5.1"
+          onClick={() => setCartOpen(false)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setCartOpen(false)
+            }
+          }}
+        />
       </header>
       {items.length > 0 ? (
         <div className={styles.overflow_cart}>
@@ -43,12 +67,17 @@ const Cart = ({ setCartOpen }) => {
                     <div className={styles.flexer2}>
                       <div>
                         <span
+                          tabIndex="5.2"
                           className={styles.increment_decrement}
-                          onClick={() => {
-                            if (item.quantity === 1) {
-                              dispatch(decrementCart(item.id))
-                            } else {
-                              dispatch(decrementCartItems(item.id))
+                          onClick={() =>
+                            handleClickAndEnterDecrement(item.quantity, item.id)
+                          }
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              handleClickAndEnterDecrement(
+                                item.quantity,
+                                item.id
+                              )
                             }
                           }}
                         >
@@ -56,12 +85,22 @@ const Cart = ({ setCartOpen }) => {
                         </span>
                         <span>{item.quantity}</span>
                         <span
+                          tabIndex="5.3"
                           className={styles.increment_decrement}
-                          onClick={() => {
-                            if (item.quantity === item.stock) {
-                              dispatch(incrementCartItemsByZero(item.id))
-                            } else {
-                              dispatch(incrementCartItems(item.id))
+                          onClick={() =>
+                            handleClickAndEnterIncrement(
+                              item.quantity,
+                              item.stock,
+                              item.id
+                            )
+                          }
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              handleClickAndEnterIncrement(
+                                item.quantity,
+                                item.stock,
+                                item.id
+                              )
                             }
                           }}
                         >
@@ -94,6 +133,7 @@ const Cart = ({ setCartOpen }) => {
         <div className={styles.cart_nonEmpty_footer}>
           <p>Promo code can be applied on payment page</p>
           <button
+            tabIndex="5.4"
             onClick={() => {
               dispatch(clearCart())
               setCartOpen(false)
@@ -107,7 +147,9 @@ const Cart = ({ setCartOpen }) => {
         </div>
       ) : (
         <div className={styles.cart_footer} onClick={() => setCartOpen(false)}>
-          <Link to="/products">Start Shopping</Link>
+          <Link to="/products" tabIndex="5.5">
+            Start Shopping
+          </Link>
         </div>
       )}
     </div>

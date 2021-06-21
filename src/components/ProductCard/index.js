@@ -8,6 +8,7 @@ import { incrementCart } from "../../redux/features/addToCart"
 const ProductCard = ({ product }) => {
   const { id, name, description, imageURL, price, stock } = product
   const [showMessage, setShowMessage] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState({
     response: "",
     responseMessage: "",
@@ -15,20 +16,26 @@ const ProductCard = ({ product }) => {
   const items = useSelector((state) => state.cart.items)
   const dispatch = useDispatch()
 
-  const { response, isLoading } = APIService({
-    apiRoute: "addToCart",
-    method: "POST",
-  })
-
   const handleBuy = () => {
-    if (response.response === "Success") {
-      dispatch(incrementCart({ id, name, imageURL, price, quantity: 1, stock }))
-      setMessage(response)
-    }
-    setShowMessage(true)
-    setTimeout(() => {
-      setShowMessage(false)
-    }, 1000)
+    setIsLoading(true)
+    fetch(`${process.env.BACKEND_URL}/addToCart`, { method: "POST" })
+      .then((response) => response.json())
+      .then((data) => {
+        setMessage(data)
+        if (data.response === "Success") {
+          dispatch(
+            incrementCart({ id, name, imageURL, price, quantity: 1, stock })
+          )
+        }
+        setShowMessage(true)
+      })
+      .then(() => {
+        setIsLoading(false)
+        setTimeout(() => {
+          setShowMessage(false)
+        }, 1000)
+      })
+      .catch((err) => console.error(err))
   }
 
   return (
