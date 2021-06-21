@@ -202,6 +202,25 @@
     height: 92.3vh;
     .overflow_cart {
       height: 75%;
+      .cart_item {
+        .flexer {
+          img {
+            width: 60px;
+            margin-right: 7px;
+          }
+          div {
+            .flexer2 {
+              span,
+              svg {
+                margin-right: 7px;
+              }
+              p {
+                width: 100px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

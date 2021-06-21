@@ -86,6 +86,9 @@
           display: inline;
         }
       }
+      .addedBtn {
+        width: 100%;
+      }
     }
   }
 }
@@ -95,6 +98,9 @@
     width: 300px;
     .card_footer {
       .buyBtn {
+        margin-top: 10px;
+      }
+      .addedBtn {
         margin-top: 10px;
       }
     }

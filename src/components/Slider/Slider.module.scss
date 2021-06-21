@@ -25,9 +25,7 @@
   .prevBtn:focus,
   .nextBtn:focus {
     cursor: pointer;
-    opacity: 1;
-    background-color: #ddd;
-    color: #333;
+    opacity: 0.5;
   }
 
   .prevBtn {
