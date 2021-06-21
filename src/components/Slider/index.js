@@ -4,6 +4,8 @@ import APIService from "../../utils/APIService"
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(1)
+  const [intervalId, setIntervalId] = useState(null)
+
   const { response, isLoading } = APIService({
     apiRoute: "banners",
     method: "GET",
@@ -34,6 +36,7 @@ const Slider = () => {
         counter = 1
       }
     }, 3000)
+    setIntervalId(refresh)
     return () => {
       clearInterval(refresh)
     }
@@ -71,6 +74,16 @@ const Slider = () => {
         )}
         <button className={styles.nextBtn} onClick={() => plusSlides(1)}>
           NEXT
+        </button>
+        <button
+          aria-labelledby="stop carousel"
+          className="sr-only"
+          onClick={() => {
+            clearInterval(intervalId)
+            console.log("Interval Cleared")
+          }}
+        >
+          STOP CAROUSEL
         </button>
         <div className={styles.circles}>
           {response
