@@ -131,6 +131,7 @@ const SideNavbar = () => {
         style={showList ? { display: "block" } : { display: "none" }}
       >
         <li
+          tabIndex="6"
           onClick={() =>
             handleLinks(
               "/products/5b6899953d1a866534f516e2",
@@ -141,6 +142,7 @@ const SideNavbar = () => {
           Fruits &amp; Vegitables
         </li>
         <li
+          tabIndex="7"
           onClick={() =>
             handleLinks(
               "/products/5b6899123d1a866534f516de",
@@ -151,6 +153,7 @@ const SideNavbar = () => {
           Bakery Cakes and Dairy
         </li>
         <li
+          tabIndex="8"
           onClick={() =>
             handleLinks("/products/5b675e5e5936635728f9fc30", "Beverages")
           }
@@ -158,6 +161,7 @@ const SideNavbar = () => {
           Beverages
         </li>
         <li
+          tabIndex="9"
           onClick={() =>
             handleLinks(
               "/products/5b68994e3d1a866534f516df",
@@ -168,6 +172,7 @@ const SideNavbar = () => {
           Beauty and Hygiene
         </li>
         <li
+          tabIndex="10"
           onClick={() =>
             handleLinks("/products/5b6899683d1a866534f516e0", "Baby Care")
           }

@@ -5,7 +5,7 @@ import Message from "../Message"
 import { useSelector, useDispatch } from "react-redux"
 import { incrementCart } from "../../redux/features/addToCart"
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, index }) => {
   const { id, name, description, imageURL, price, stock } = product
   const [showMessage, setShowMessage] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -40,16 +40,29 @@ const ProductCard = ({ product }) => {
 
   return (
     <>
-      <div className={styles.card}>
-        <h2>{name}</h2>
+      <div
+        className={styles.card}
+        tabIndex={11 + index}
+        aria-labelledby="Product Card"
+      >
+        <h2 tabIndex={11.1 + index} aria-labelledby={name}>
+          {name}
+        </h2>
         <div className={styles.flexer}>
           <img src={imageURL} alt={name} />
-          <p className={styles.desc}>{description}</p>
+          <p
+            className={styles.desc}
+            tabIndex={11.2 + index}
+            aria-describedby={description}
+          >
+            {description}
+          </p>
         </div>
         <div className={styles.card_footer}>
           <p>MRP Rs. {price}</p>
           {items.filter((item) => item.id === id).length === 0 ? (
             <button
+              tabIndex={11.3 + index}
               disabled={isLoading}
               aria-labelledby={`Buy ${name} @ MRP Rs. ${price}`}
               className={styles.buyBtn}
@@ -59,7 +72,12 @@ const ProductCard = ({ product }) => {
               <span className={styles.buttonPrice}>@ MRP Rs. {price}</span>
             </button>
           ) : (
-            <button className={styles.addedBtn}>Added</button>
+            <button
+              className={styles.addedBtn}
+              aria-labelledby={`Added ${name} @ MRP Rs. ${price}`}
+            >
+              Added
+            </button>
           )}
         </div>
       </div>

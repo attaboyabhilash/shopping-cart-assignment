@@ -1,10 +1,10 @@
 .cart {
   position: absolute;
   right: 10%;
-  top: 110px;
+  top: 110.525px;
   width: 400px;
-  height: 84.7vh;
-  z-index: 1001;
+  height: calc(100vh - 110.525px);
+  z-index: 1002;
   transition: linear 350ms ease-in-out;
   background-color: #f4f4f4;
   .cart_head {
@@ -17,6 +17,7 @@
     position: absolute;
     top: 0;
     width: 100%;
+    box-shadow: none !important;
     div {
       display: flex;
       align-items: flex-end;
@@ -188,9 +189,26 @@
   }
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1001;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 @media only screen and (max-width: 1000px) {
   .cart {
     right: 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .cart {
+    top: 60.725px;
+    height: calc(100vh - 60.725px);
   }
 }
 
@@ -198,8 +216,6 @@
   .cart {
     right: 0;
     width: 100%;
-    top: 60px;
-    height: 92.3vh;
     .overflow_cart {
       height: 75%;
       .cart_item {
@@ -222,5 +238,8 @@
         }
       }
     }
+  }
+  .overlay {
+    display: none;
   }
 }

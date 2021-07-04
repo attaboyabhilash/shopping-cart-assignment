@@ -20,8 +20,10 @@ const Products = () => {
           {isLoading ? (
             <h3>Loading...</h3>
           ) : (
-            response.map((product) => {
-              return <ProductCard key={product.id} product={product} />
+            response.map((product, index) => {
+              return (
+                <ProductCard key={product.id} index={index} product={product} />
+              )
             })
           )}
         </main>
