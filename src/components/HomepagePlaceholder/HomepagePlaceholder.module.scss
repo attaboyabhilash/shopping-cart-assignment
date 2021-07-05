@@ -1,3 +1,5 @@
+@import "../../pages/styles/mixins.scss";
+
 .placeholder {
   display: flex;
   justify-content: space-between;
@@ -36,7 +38,7 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-@media only screen and (max-width: 1000px) {
+@include laptop {
   .placeholder {
     padding: 20px;
     .placeholderImg,
@@ -46,7 +48,7 @@
   }
 }
 
-@media only screen and (max-width: 520px) {
+@include tablet {
   .placeholder {
     padding: 40px 20px;
     .placeholderImg {
@@ -62,7 +64,7 @@
   }
 }
 
-@media only screen and (max-width: 350px) {
+@include mobileL {
   .placeholder {
     .description {
       a {

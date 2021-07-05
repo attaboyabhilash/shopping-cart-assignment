@@ -1,3 +1,5 @@
+@import "../../pages/styles/mixins.scss";
+
 .cart {
   position: absolute;
   right: 10%;
@@ -123,26 +125,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            span,
-            svg {
-              margin-right: 10px;
-              padding-top: 2.5px;
+            .perUnitPrices {
+              width: 70%;
+              display: flex;
+              align-items: center;
+              span {
+                width: 30px;
+                text-align: center;
+              }
+              svg {
+                margin: 0px 10px;
+                padding-top: 2.5px;
+              }
+              .increment_decrement {
+                cursor: pointer;
+                background-color: #d10157;
+                color: #fff;
+                text-align: center;
+                border-radius: 50%;
+                border: 0px;
+                font-weight: 600;
+                font-family: "Dosis", sans-serif;
+                padding: 3px 7px;
+                padding-top: 0px;
+              }
             }
-            .increment_decrement {
-              cursor: pointer;
-              background-color: #d10157;
-              color: #fff;
-              text-align: center;
-              border-radius: 50%;
-              border: 0px;
-              font-weight: 600;
-              font-family: "Dosis", sans-serif;
-              padding: 4.5px 9px;
-              padding-top: 0px;
-            }
-            p {
+            .quantityPrice {
               margin: 0;
-              width: 150px;
+              width: 30%;
               text-align: end;
             }
           }
@@ -199,20 +209,20 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-@media only screen and (max-width: 1000px) {
+@include laptop {
   .cart {
     right: 0;
   }
 }
 
-@media only screen and (max-width: 700px) {
+@include tablet {
   .cart {
     top: 60.725px;
     height: calc(100vh - 60.725px);
   }
 }
 
-@media only screen and (max-width: 500px) {
+@include mobileL {
   .cart {
     right: 0;
     width: 100%;

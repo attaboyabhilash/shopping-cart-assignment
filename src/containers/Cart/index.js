@@ -66,8 +66,8 @@ const Cart = ({ setCartOpen }) => {
                     <div>
                       <h3>{item.name}</h3>
                       <div className={styles.flexer2}>
-                        <div>
-                          <span
+                        <div className={styles.perUnitPrices}>
+                          <button
                             tabIndex="5.2"
                             className={styles.increment_decrement}
                             onClick={() =>
@@ -76,19 +76,11 @@ const Cart = ({ setCartOpen }) => {
                                 item.id
                               )
                             }
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleClickAndEnterDecrement(
-                                  item.quantity,
-                                  item.id
-                                )
-                              }
-                            }}
                           >
                             -
-                          </span>
+                          </button>
                           <span>{item.quantity}</span>
-                          <span
+                          <button
                             tabIndex="5.3"
                             className={styles.increment_decrement}
                             onClick={() =>
@@ -98,22 +90,15 @@ const Cart = ({ setCartOpen }) => {
                                 item.id
                               )
                             }
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleClickAndEnterIncrement(
-                                  item.quantity,
-                                  item.stock,
-                                  item.id
-                                )
-                              }
-                            }}
                           >
                             +
-                          </span>
+                          </button>
                           <IoCloseSharp />
                           Rs. {item.price}
                         </div>
-                        <p>Rs. {item.quantity * item.price}</p>
+                        <p className={styles.quantityPrice}>
+                          Rs. {item.quantity * item.price}
+                        </p>
                       </div>
                     </div>
                   </div>

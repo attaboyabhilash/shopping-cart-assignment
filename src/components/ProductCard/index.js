@@ -1,12 +1,18 @@
-import React, { useState } from "react"
-import APIService from "../../utils/APIService"
+import React, { useState, useEffect } from "react"
 import styles from "./ProductCard.module.scss"
 import Message from "../Message"
 import { useSelector, useDispatch } from "react-redux"
-import { incrementCart } from "../../redux/features/addToCart"
+import {
+  incrementCart,
+  decrementCart,
+  decrementCartItems,
+  incrementCartItemsByZero,
+  incrementCartItems,
+} from "../../redux/features/addToCart"
 
 const ProductCard = ({ product, index }) => {
   const { id, name, description, imageURL, price, stock } = product
+  const [quantity, setQuantity] = useState(0)
   const [showMessage, setShowMessage] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState({
@@ -15,6 +21,22 @@ const ProductCard = ({ product, index }) => {
   })
   const items = useSelector((state) => state.cart.items)
   const dispatch = useDispatch()
+
+  const handleClickAndEnterDecrement = () => {
+    if (quantity === 1) {
+      dispatch(decrementCart(id))
+    } else {
+      dispatch(decrementCartItems(id))
+    }
+  }
+
+  const handleClickAndEnterIncrement = () => {
+    if (quantity === stock) {
+      dispatch(incrementCartItemsByZero(id))
+    } else {
+      dispatch(incrementCartItems(id))
+    }
+  }
 
   const handleBuy = () => {
     setIsLoading(true)
@@ -37,6 +59,11 @@ const ProductCard = ({ product, index }) => {
       })
       .catch((err) => console.error(err))
   }
+
+  useEffect(() => {
+    const quantity = items.filter((item) => item.id === id)[0]?.quantity
+    setQuantity(quantity)
+  }, [items])
 
   return (
     <>
@@ -72,12 +99,21 @@ const ProductCard = ({ product, index }) => {
               <span className={styles.buttonPrice}>@ MRP Rs. {price}</span>
             </button>
           ) : (
-            <button
-              className={styles.addedBtn}
-              aria-labelledby={`Added ${name} @ MRP Rs. ${price}`}
-            >
-              Added
-            </button>
+            <div className={styles.buttonGroup}>
+              <button
+                tabIndex={11.4 + index}
+                onClick={handleClickAndEnterDecrement}
+              >
+                -
+              </button>
+              <span>{quantity}</span>
+              <button
+                tabIndex={11.5 + index}
+                onClick={handleClickAndEnterIncrement}
+              >
+                +
+              </button>
+            </div>
           )}
         </div>
       </div>

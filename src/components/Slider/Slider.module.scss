@@ -1,3 +1,5 @@
+@import "../../pages/styles/mixins.scss";
+
 .slider {
   overflow: hidden;
   position: relative;
@@ -70,7 +72,7 @@
   }
 }
 
-@media only screen and (max-width: 500px) {
+@include tablet {
   .slider {
     .circles {
       bottom: 5px;

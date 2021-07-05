@@ -1,3 +1,5 @@
+@import "../../pages/styles/mixins.scss";
+
 .sidebar {
   background-color: #eaeaea;
   height: inherit;
@@ -27,19 +29,19 @@
   display: none;
 }
 
-@media only screen and (max-width: 1200px) {
+@include laptopM {
   .sidebar {
     width: 25%;
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@include laptop {
   .sidebar {
     width: 27%;
   }
 }
 
-@media only screen and (max-width: 700px) {
+@include tablet {
   .sidebar {
     display: none;
   }
@@ -47,7 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: -50px;
+    margin-top: 0px;
     margin-bottom: 25px;
     width: 100%;
     padding: 10px;
@@ -60,7 +62,7 @@
     background-color: #d10157;
     color: #fff;
     padding: 0px;
-    margin-top: 0px;
+    margin-top: -25px;
     transition: all 0.2s ease-in-out;
     li {
       padding: 10px;
@@ -71,7 +73,7 @@
   }
 }
 
-@media only screen and (max-width: 500px) {
+@include mobileL {
   .select_navigation {
     margin-top: 10px;
   }

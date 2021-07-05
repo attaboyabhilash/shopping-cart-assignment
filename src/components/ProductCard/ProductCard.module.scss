@@ -1,3 +1,5 @@
+@import "../../pages/styles/mixins.scss";
+
 .card {
   padding: 15px;
   width: 260px;
@@ -42,22 +44,31 @@
         display: none;
       }
     }
-    .addedBtn {
-      cursor: pointer;
-      background-color: #aaa;
-      color: #fff;
-      padding: 10px;
-      border-radius: 2px;
-      border: 0px;
-      font-weight: 500;
-      font-size: 1.1em;
+    .buttonGroup {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       min-width: 125px;
-      font-family: "Dosis", sans-serif;
+      button {
+        cursor: pointer;
+        background-color: #d10157;
+        color: #fff;
+        padding: 10px;
+        border-radius: 2px;
+        border: 0px;
+        width: 30%;
+        font-weight: 500;
+        font-size: 1.1em;
+      }
+      span {
+        font-weight: 500;
+        font-size: 1.1em;
+      }
     }
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@include laptop {
   .card {
     width: 290px;
     h2 {
@@ -86,14 +97,17 @@
           display: inline;
         }
       }
-      .addedBtn {
+      .buttonGroup {
         width: 100%;
+        button {
+          width: 25%;
+        }
       }
     }
   }
 }
 
-@media only screen and (max-width: 700px) {
+@include tablet {
   .card {
     width: 300px;
     .card_footer {
@@ -107,7 +121,7 @@
   }
 }
 
-@media only screen and (max-width: 400px) {
+@include mobileL {
   .card {
     width: 100%;
   }

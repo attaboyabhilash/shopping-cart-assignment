@@ -1,18 +1,20 @@
+@import "../../pages/styles/mixins.scss";
+
 .placeholder {
-   h2 {
-      margin-top: 0px;
-      font-size: 2em;
-      font-weight: 700;
-   }
-   p {
-      font-size: 1em;
-      font-weight: 500;
-   }
+  h2 {
+    margin-top: 0px;
+    font-size: 2em;
+    font-weight: 700;
+  }
+  p {
+    font-size: 1em;
+    font-weight: 500;
+  }
 }
 
-@media only screen and (max-width: 400px) {
-   .placeholder {
-      width: 90%;
-      margin: auto;
-   }
+@include mobileL {
+  .placeholder {
+    width: 90%;
+    margin: auto;
+  }
 }
