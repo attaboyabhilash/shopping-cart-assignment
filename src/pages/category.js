@@ -24,8 +24,14 @@ const Category = () => {
           ) : (
             response
               .filter((product) => product.category === String(categoryId))
-              .map((product) => {
-                return <ProductCard key={product.id} product={product} />
+              .map((product, index) => {
+                return (
+                  <ProductCard
+                    key={product.id}
+                    index={index}
+                    product={product}
+                  />
+                )
               })
           )}
         </main>
