@@ -1,0 +1,128 @@
+@import "../../pages/styles/mixins.scss";
+
+.card {
+  padding: 15px;
+  width: 260px;
+  height: fit-content;
+  margin: 10px auto;
+  border-bottom: 1px dashed #aaa;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  h2 {
+    font-size: 1.3em;
+    margin-top: 0px;
+    height: 78.9px;
+    overflow: hidden;
+  }
+  .flexer {
+    img {
+      width: 100%;
+    }
+    .desc {
+      padding: 5px 10px;
+      background-color: #eee;
+      height: 92px;
+      overflow: hidden;
+    }
+  }
+  .card_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .buyBtn {
+      cursor: pointer;
+      background-color: #d10157;
+      color: #fff;
+      padding: 10px;
+      border-radius: 2px;
+      border: 0px;
+      font-weight: 500;
+      font-size: 1.1em;
+      min-width: 125px;
+      font-family: "Dosis", sans-serif;
+      .buttonPrice {
+        display: none;
+      }
+    }
+    .buttonGroup {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-width: 125px;
+      button {
+        cursor: pointer;
+        background-color: #d10157;
+        color: #fff;
+        padding: 10px;
+        border-radius: 2px;
+        border: 0px;
+        width: 30%;
+        font-weight: 500;
+        font-size: 1.1em;
+      }
+      span {
+        font-weight: 500;
+        font-size: 1.1em;
+      }
+    }
+  }
+}
+
+@include laptop {
+  .card {
+    width: 290px;
+    h2 {
+      height: 53.4px;
+    }
+    .flexer {
+      display: flex;
+      align-items: flex-start;
+      img {
+        width: 45%;
+      }
+      .desc {
+        margin-top: 0px;
+        height: 112px;
+      }
+    }
+    .card_footer {
+      p {
+        display: none;
+      }
+      .buyBtn {
+        width: 100%;
+        position: relative;
+        z-index: 10;
+        .buttonPrice {
+          display: inline;
+        }
+      }
+      .buttonGroup {
+        width: 100%;
+        button {
+          width: 25%;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .card {
+    width: 300px;
+    .card_footer {
+      .buyBtn {
+        margin-top: 10px;
+      }
+      .addedBtn {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+@include mobileL {
+  .card {
+    width: 100%;
+  }
+}

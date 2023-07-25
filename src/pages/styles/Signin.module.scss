@@ -1,0 +1,53 @@
+@import "./mixins.scss";
+
+.signin {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 350px;
+  padding-top: 75px;
+
+  .mid_flexer {
+    height: 10px;
+    width: 50px;
+  }
+
+  .signin_form {
+    width: 350px;
+
+    input[type="submit"] {
+      margin-top: 10px;
+      width: 100%;
+      cursor: pointer;
+      background-color: #d10157;
+      color: #fff;
+      padding: 10px;
+      border-radius: 2px;
+      border: 0px;
+      font-weight: 500;
+      font-size: 1.1em;
+      font-family: "Dosis", sans-serif;
+    }
+  }
+}
+
+@include tablet {
+  .signin {
+    display: block;
+    width: fit-content;
+    margin: auto;
+
+    .mid_flexer {
+      height: 30px;
+    }
+  }
+}
+
+@include mobileL {
+  .signin {
+    .signin_form {
+      width: 90%;
+      margin: auto;
+    }
+  }
+}

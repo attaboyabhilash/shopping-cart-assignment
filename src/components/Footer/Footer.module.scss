@@ -1,0 +1,25 @@
+@import "../../pages/styles/mixins.scss";
+
+footer {
+  background-color: #eaeaea;
+  padding: 7px 10%;
+  position: relative;
+  bottom: 0 !important;
+  z-index: 90;
+  width: 100%;
+  p {
+    margin: 7px auto;
+  }
+}
+
+@include laptop {
+  footer {
+    padding: 7px 5%;
+  }
+}
+
+@include tablet {
+  footer {
+    padding: 7px 10px;
+  }
+}

@@ -1,0 +1,20 @@
+@import "../../pages/styles/mixins.scss";
+
+.layout {
+  min-height: 75vh;
+  width: 80%;
+  margin: 20px auto;
+  margin-top: 130px;
+}
+
+@include laptop {
+  .layout {
+    width: 100%;
+  }
+}
+
+@include tablet {
+  .layout {
+    margin-top: 75px;
+  }
+}
